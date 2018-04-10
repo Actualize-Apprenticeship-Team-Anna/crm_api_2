@@ -16,3 +16,6 @@ class DailyProgressLogsController < ApplicationController
     end
   end
 end
+
+
+
