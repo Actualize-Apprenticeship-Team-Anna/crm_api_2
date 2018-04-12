@@ -25,6 +25,7 @@ class LeadsController < ApplicationController
 
   def new
     @lead = Lead.new
+    @new_lead_active = "active"
   end
 
   def create
