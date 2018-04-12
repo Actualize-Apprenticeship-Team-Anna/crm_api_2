@@ -17,5 +17,5 @@ class DailyProgressLogsController < ApplicationController
   end
 end
 
-
+puts "hello"
 
