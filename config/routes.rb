@@ -10,6 +10,9 @@ Rails.application.routes.draw do
   post '/voice' => 'leads#voice'
   post '/text' => 'leads#text'
 
+  get '/leads/edit/:id' => 'leads#edit'
+  post '/leads/edit/:id' => 'leads#auto_text'
+
   get '/daily_logs' => 'daily_progress_logs#index'
 
   post '/incoming_voice' => 'webhooks#incoming_voice'
@@ -18,8 +21,10 @@ Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
       get '/leads' => 'leads#index'
-      get '/leads/:id' => 'leads#show'
-      post '/leads' => 'leads#create'
+      get '/leads' => 'leads#show'
+      # get '/leads/edit/1' => 'leads#edit'
+      post '/leads/:id' => 'leads#create'
+
     end
   end
 
