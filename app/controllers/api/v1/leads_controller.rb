@@ -10,6 +10,10 @@ class Api::V1::LeadsController < ApplicationController
     render "show.json.jbuilder"
   end
 
+  def edit
+    
+  end
+
   def create
     # A lead is created by someone triggering an "event" on the website in 
     # which they submit information like a name and email address. 
