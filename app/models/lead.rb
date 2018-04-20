@@ -23,6 +23,15 @@ class Lead < ApplicationRecord
     )
   end
 
+  def auto_text
+
+    client.messages.create(
+      from: ENV['TWILIO_PHONE_NUMBER'],
+      to: '+12243107523',
+      body: "Hi, #{@lead.first_name}!"
+      )
+  end
+
   def full_name
     "#{self.first_name} #{self.last_name}"
   end

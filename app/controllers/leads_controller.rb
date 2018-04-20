@@ -49,6 +49,12 @@ class LeadsController < ApplicationController
                   :from => ENV['TWILIO_PHONE_NUMBER']
     })
     @messages = (messages_from_lead + messages_from_call_converter).sort_by {|m| m.date_sent}
+
+    # client.messages.create(
+    #   from: ENV['TWILIO_PHONE_NUMBER'],
+    #   to: '+12243107523',
+    #   body: "Hi, #{@lead.first_name}!"
+    #   )
   end
 
   def update
@@ -118,6 +124,30 @@ class LeadsController < ApplicationController
     )
 
     render nothing: true
+  end
+
+  def auto_text
+
+    @lead = Lead.find_by(id: params[:id])
+
+    # We grab the entire text history from the Twilio API
+    client = Twilio::REST::Client.new ENV['TWILIO_ACCOUNT_SID'], ENV['TWILIO_AUTH_TOKEN']
+    messages_from_lead = client.account.messages.list({
+                  :to   => ENV['TWILIO_PHONE_NUMBER'], 
+                  :from => @lead.phone
+    })
+    messages_from_call_converter = client.account.messages.list({
+                  :to   => @lead.phone,
+                  :from => ENV['TWILIO_PHONE_NUMBER']
+    })
+    @messages = (messages_from_lead + messages_from_call_converter).sort_by {|m| m.date_sent}
+
+    client.messages.create(
+      from: ENV['TWILIO_PHONE_NUMBER'],
+      to: "#{@lead.phone}",
+      body: "Hi, #{@lead.first_name}!"
+      )
+
   end
 
   def no_leads
