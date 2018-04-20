@@ -1,0 +1,11 @@
+<%= form_for @user_setting, url: settings_path(@user_setting), html: { method: :patch } do |f| %>
+<div class="form-group">
+  <%= f.label :text_message, "Auto-Text" %>
+    <%= f.text_field :text_message, class: 'form-control' %>
+</div>
+<div class="row">
+  <div class="col-md-6" id="update-btn-col">
+    <%= f.submit :update, {value: "Save", class: 'btn btn-primary btn-lg update-btn'} %>
+  </div>
+</div>
+<% end %>

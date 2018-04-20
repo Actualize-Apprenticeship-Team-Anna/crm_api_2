@@ -145,7 +145,7 @@ class LeadsController < ApplicationController
     client.messages.create(
       from: ENV['TWILIO_PHONE_NUMBER'],
       to: "#{@lead.phone}",
-      body: "Hi, #{@lead.first_name}!"
+      body: UserSetting.find_by(admin_id: current_admin.id)[:text_message]
       )
 
   end
