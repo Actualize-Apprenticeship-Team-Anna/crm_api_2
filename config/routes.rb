@@ -9,8 +9,9 @@ Rails.application.routes.draw do
   get '/token' => 'leads#token'
   post '/voice' => 'leads#voice'
   post '/text' => 'leads#text'
-  get '/settings/edit' => 'settings#edit'
-  patch '/settings' => 'settings#update'
+  
+  get '/settings/edit' => 'user_settings#edit'
+  patch '/settings' => 'user_settings#update'
 
   get '/daily_logs' => 'daily_progress_logs#index'
 
