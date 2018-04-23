@@ -16,10 +16,26 @@ document.addEventListener("DOMContentLoaded", function(event) {
     methods: {
       moment: function(date) {
         return moment(date);
-      }
+      },
+      onClickLead: function(lead) {
+        console.log("lead", lead);
+      },
+      scrollFunction: function(lead) {
+        console.log("oyt");
+          var x = document.getElementById("myDIV");
+          if (x.style.display === "none") {
+              x.style.display = "block";
+          } else {
+              x.style.display = "none";
+          }
+      } 
     },
+
+
     computed: {
 
     },
   });
 });
+
+
