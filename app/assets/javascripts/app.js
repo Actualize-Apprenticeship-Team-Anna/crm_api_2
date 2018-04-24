@@ -1,25 +1,38 @@
 /* global Vue */
-document.addEventListener("DOMContentLoaded", function(event) { 
+document.addEventListener("DOMContentLoaded", function(event) {
   var app = new Vue({
-    el: '#app',
+    el: "#app",
     data: {
       leads: [],
       time_format: "12/25/17",
-      url: "https://www.google.com/"
+      url: "https://www.google.com/",
+      searchTerm: ""
     },
     mounted: function() {
-      $.get('/api/v1/leads.json').success(function(response) {
-        console.log(this);
-        this.leads = response;
-      }.bind(this));
+      $.get("/api/v1/leads.json").success(
+        function(response) {
+          console.log(this);
+          this.leads = response;
+        }.bind(this)
+      );
     },
     methods: {
       moment: function(date) {
         return moment(date);
+      },
+      isValidLead: function(lead) {
+        var validFirstName = lead.first_name
+          .toLowerCase()
+          .includes(this.searchTerm.toLowerCase());
+        var validLastName = lead.last_name
+          .toLowerCase()
+          .includes(this.searchTerm.toLowerCase());
+        var validEmail = lead.email
+          .toLowerCase()
+          .includes(this.searchTerm.toLowerCase());
+        return validFirstName || validLastName || validEmail;
       }
     },
-    computed: {
-
-    },
+    computed: {}
   });
 });

@@ -6,10 +6,7 @@
       </header>
       <div class="row" id="top-row">
         <div>
-          <%= form_tag('/leads', method: :get) do %>
-            <%= text_field_tag :search %>
-            <%= submit_tag "Search" %>
-          <% end %>
+          Search: <input v-model="searchTerm">
           
         </div>
 
@@ -39,7 +36,7 @@
               </tr>
             </thead>
             <tbody>
-              <tr v-for="lead in leads">
+              <tr v-for="lead in leads" v-if="isValidLead(lead)">
                 <td>{{ moment(lead.created_at).format('dddd MMM Do YYYY, h:mm a') }}</td>
                 <td>{{ lead.first_name }}</td>
                 <td>{{ lead.last_name }}</td>
@@ -49,7 +46,7 @@
                 <td>{{ moment(lead.appointment_date).format('dddd MMM Do YYYY, h:mm a') }}</td>
                 <td>{{ lead.rep_notes }}</td>
 
-                <!-- <td>{{ lead.processed_within_minutes }}</td> --
+                <!-- <td>{{ lead.processed_within_minutes }}</td> -->
               </tr>
             </tbody>
           </table>
