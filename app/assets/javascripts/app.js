@@ -16,10 +16,19 @@ document.addEventListener("DOMContentLoaded", function(event) {
     methods: {
       moment: function(date) {
         return moment(date);
-      }
+      },
+      toggleFunction: function(lead) {
+        console.log("hello")
+       if( document.getElementById(lead.id).style.display=='none' ){
+         document.getElementById(lead.id).style.display = 'block';
+       }else{
+         document.getElementById(lead.id).style.display = 'none';
+       }
+    },
     },
     computed: {
 
     },
   });
 });
+
