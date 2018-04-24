@@ -16,10 +16,15 @@ document.addEventListener("DOMContentLoaded", function(event) {
     methods: {
       moment: function(date) {
         return moment(date);
-      }
-    },
+      },
+    
+    }, 
+
+
     computed: {
 
     },
   });
 });
+
+
