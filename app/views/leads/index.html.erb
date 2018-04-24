@@ -38,13 +38,9 @@
                 <!-- <th>Processed Within</th> -->
               </tr>
             </thead>
-            <tbody >
-
-              <!-- <button onclick="scrollFunction()">work</button> -->
-
-             
-                <tr v-for="lead in leads" v-on:click="scrollFunction(lead)">
-                  <td >{{ moment(lead.created_at).format('dddd MMM Do YYYY, h:mm a') }}</td>
+              <tbody>
+                <tr v-for="lead in leads">
+                  <td>{{ moment(lead.created_at).format('dddd MMM Do YYYY, h:mm a') }}</td>
                   <td>{{ lead.first_name }}</td>
                   <td>{{ lead.last_name }}</td>
                   <td><a v-bind:href="'/leads/' + lead.id + '/edit'">{{ lead.email }}</a></td>
@@ -52,13 +48,10 @@
                   <!-- <td>{{ lead.hot }}</td> -->
                   <td>{{ moment(lead.appointment_date).format('dddd MMM Do YYYY, h:mm a') }}</td>
                   <td>{{ lead.rep_notes }}</td>
-                  <td>{{ lead.processed_within_minutes }}</td> 
-                  <a v-on:click="scrollFunction(lead)"></a>
-                </tr>
-                    <tr id="myDIV">
-                      <td>scroll </td>
-                    </tr>
-
+            
+                  <td>{{ lead.processed_within_minutes }}</td> --
+            -    </tr>
+    
 
 
             </tbody>
