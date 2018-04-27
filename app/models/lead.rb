@@ -24,7 +24,7 @@ class Lead < ApplicationRecord
   end
 
   def auto_text
-
+    puts "works"
     client.messages.create(
       from: ENV['TWILIO_PHONE_NUMBER'],
       to: '+12243107523',

@@ -6,10 +6,7 @@
       </header>
       <div class="row" id="top-row">
         <div>
-          <%= form_tag('/leads', method: :get) do %>
-            <%= text_field_tag :search %>
-            <%= submit_tag "Search" %>
-          <% end %>
+          Search: <input v-model="searchTerm">
           
         </div>
 
@@ -31,13 +28,11 @@
                 <th>Last Name</th>
                 <th>Email</th>
                 <th>Phone</th>
-                <!-- <th>Hot?</th> -->
                 <th>Appointment Date</th>
                 <th>Call Converter notes </th>
-
-                <!-- <th>Processed Within</th> -->
               </tr>
             </thead>
+
             <tbody>
 
               <template v-for="lead in leads"> 
@@ -49,33 +44,26 @@
                   <td>{{ lead.last_name }}</td>
                   <td><a v-bind:href="'/leads/' + lead.id + '/edit'">{{ lead.email }}</a></td>
                   <td>{{ lead.phone }}</td>
-                  <!-- <td>{{ lead.hot }}</td> -->
                   <td>{{ moment(lead.appointment_date).format('dddd MMM Do YYYY, h:mm a') }}</td>
                   <td>{{ lead.rep_notes }}</td>
 
-                  <!-- <!-- <td>{{ lead.processed_within_minutes }}</td> -- -->
                   <div v-bind:id="lead.id" style="display:none"> 
                     <div class="events-container"> <div class="events-div"> Started Application </div> <div class="events-div">{{ moment(lead.created_at).format('dddd MMM Do YYYY, h:mm a') }}</div> </div>
                     <div class="events-container"><div class="events-div">footer_form</div> <div class="events-div">{{ moment(lead.updated_at).format('dddd MMM Do YYYY, h:mm a') }}</div></div>
                  </div>
-
                 </tr>
 
               </template>
 
               <tr v-for="lead in leads" v-if="isValidLead(lead)" v-bind:class="{ 'no-outreaches': lead.outreaches.length == 0 }">
-                              <td>{{ moment(lead.created_at).format('dddd MMM Do YYYY, h:mm a') }}</td>
-                              <td>{{ lead.first_name }}</td>
-                              <td>{{ lead.last_name }}</td>
-                              <td><a v-bind:href="'/leads/' + lead.id + '/edit'">{{ lead.email }}</a></td>
-                              <td>{{ lead.phone }}</td>
-                              <!-- <td>{{ lead.hot }}</td> -->
-                              <td>{{ moment(lead.appointment_date).format('dddd MMM Do YYYY, h:mm a') }}</td>
-                              <td>{{ lead.rep_notes }}</td>
-
-                              <!-- <td>{{ lead.processed_within_minutes }}</td> -->
-                            </tr>
-
+                <td>{{ moment(lead.created_at).format('dddd MMM Do YYYY, h:mm a') }}</td>
+                <td>{{ lead.first_name }}</td>
+                <td>{{ lead.last_name }}</td>
+                <td><a v-bind:href="'/leads/' + lead.id + '/edit'">{{ lead.email }}</a></td>
+                <td>{{ lead.phone }}</td>
+                <td>{{ moment(lead.appointment_date).format('dddd MMM Do YYYY, h:mm a') }}</td>
+                <td>{{ lead.rep_notes }}</td>
+              </tr>
 
             </tbody>
           </table>

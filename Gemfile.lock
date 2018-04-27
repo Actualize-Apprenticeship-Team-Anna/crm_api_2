@@ -215,6 +215,7 @@ DEPENDENCIES
   phone (= 1.2.3)
   puma (~> 3.0)
   rails (~> 5.0.1)
+  rake (~> 12.0.0)
   sass-rails (~> 5.0)
   spring
   spring-watcher-listen (~> 2.0.0)
@@ -225,4 +226,4 @@ DEPENDENCIES
   web-console (>= 3.3.0)
 
 BUNDLED WITH
-   1.16.0
+   1.16.1

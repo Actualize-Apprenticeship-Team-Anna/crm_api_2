@@ -148,6 +148,9 @@ class LeadsController < ApplicationController
       body: UserSetting.find_by(admin_id: current_admin.id)[:text_message]
       )
 
+      redirect_to "/leads/#{@lead.id}/edit"
+      flash[:success] = "Auto text sent!"
+
   end
 
   def no_leads
