@@ -55,9 +55,9 @@
 
                   <!-- <!-- <td>{{ lead.processed_within_minutes }}</td> -- -->
                   <div v-bind:id="lead.id" style="display:none"> 
-                    <p>First Became A Lead At: {{ lead.created_at }}</p>
-                    
-                  </div>
+                    <div class="events-container"> <div class="events-div"> Started Application </div> <div class="events-div">{{ moment(lead.created_at).format('dddd MMM Do YYYY, h:mm a') }}</div> </div>
+                    <div class="events-container"><div class="events-div">footer_form</div> <div class="events-div">{{ moment(lead.updated_at).format('dddd MMM Do YYYY, h:mm a') }}</div></div>
+                 </div>
 
                 </tr>
 
