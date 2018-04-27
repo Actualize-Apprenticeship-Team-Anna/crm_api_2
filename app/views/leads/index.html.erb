@@ -23,14 +23,14 @@
           <table class="table table-striped table-hover">
             <thead>
               <tr>
-                <th>Created</th>
-                <th>First Name</th>
-                <th>Last Name</th>
-                <th>Email</th>
-                <th>Phone</th>
+                <th v-on:click="setSortAttribute('created_at')">Created</th>
+                <th v-on:click="setSortAttribute('first_name')">First Name</th>
+                <th v-on:click="setSortAttribute('last_name')">Last Name</th>
+                <th v-on:click="setSortAttribute('email')">Email</th>
+                <th v-on:click="setSortAttribute('phone')">Phone</th>
                 <!-- <th>Hot?</th> -->
-                <th>Appointment Date</th>
-                <th>Call Converter notes </th>
+                <th v-on:click="setSortAttribute('appointment_date')">Appointment Date</th>
+                <th v-on:click="setSortAttribute('rep_notes')">Call Converter notes </th>
 
                 <!-- <th>Processed Within</th> -->
               </tr>
@@ -38,7 +38,7 @@
 
             <tbody>
 
-              <tr v-for="lead in leads" v-if="isValidLead(lead)" v-bind:class="{ 'no-outreaches': lead.outreaches.length == 0 }">
+              <tr v-for="lead in sortedLeads" v-if="isValidLead(lead)" v-bind:class="{ 'no-outreaches': lead.outreaches.length == 0 }">
                 <td>{{ moment(lead.created_at).format('dddd MMM Do YYYY, h:mm a') }}</td>
                 <td>{{ lead.first_name }}</td>
                 <td>{{ lead.last_name }}</td>
