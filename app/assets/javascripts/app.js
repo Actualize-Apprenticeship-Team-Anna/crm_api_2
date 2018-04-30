@@ -41,6 +41,13 @@ document.addEventListener("DOMContentLoaded", function(event) {
           this.sortAscending = true;
         }
         this.sortAttribute = attribute;
+      },
+      toggleFunction: function(lead) {
+        if (document.getElementById(lead.id).style.display == "none") {
+          document.getElementById(lead.id).style.display = "block";
+        } else {
+          document.getElementById(lead.id).style.display = "none";
+        }
       }
     },
     computed: {

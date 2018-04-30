@@ -13,6 +13,14 @@
  *= require_tree .
  *= require_self
  */
+.events-container {
+  display: flex;
+  width: 500px;
+}
+
+.events-div {
+  width: 200px;
+}
 
 .alert.alert-dismissible {
   margin-top: 20px;
