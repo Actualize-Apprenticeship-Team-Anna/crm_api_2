@@ -47,6 +47,12 @@ class Lead < ApplicationRecord
     self.update(hot: true, contacted: false, connected: false, exclude_from_calling: false, appointment_date: nil, advisor: nil, number_of_dials: 0)
   end
 
+  def most_recent_event
+    my_events = events
+    most_recent = my_events.order(updated_at: :desc)
+    return most_recent[0]
+  end
+
   private
 
   def standardize_phone
@@ -62,4 +68,5 @@ class Lead < ApplicationRecord
     # We tried dialing a valid number but the lead didn't answer their phone:
     self.contacted && !self.bad_number && !self.connected
   end
+
 end 
