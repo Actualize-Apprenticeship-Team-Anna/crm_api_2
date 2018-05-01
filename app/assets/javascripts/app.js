@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
       time_format: "12/25/17",
       url: "https://www.google.com/",
       searchTerm: "",
-      sortAttribute: "created_at",
+      sortAttribute: "events",
       sortAscending: true
     },
     mounted: function() {
@@ -54,7 +54,13 @@ document.addEventListener("DOMContentLoaded", function(event) {
       sortedLeads: function() {
         return this.leads.sort(
           function(lead1, lead2) {
-            if (this.sortAscending) {
+            if (this.sortAttribute === "events") {
+              if (lead1["most_recent_event"] && lead2["most_recent_event"]) {
+                return lead2["most_recent_event"]["updated_at"].localeCompare(
+                  lead1["most_recent_event"]["updated_at"]
+                );
+              }
+            } else if (this.sortAscending) {
               if (lead1[this.sortAttribute] && lead2[this.sortAttribute]) {
                 return lead1[this.sortAttribute].localeCompare(
                   lead2[this.sortAttribute]
