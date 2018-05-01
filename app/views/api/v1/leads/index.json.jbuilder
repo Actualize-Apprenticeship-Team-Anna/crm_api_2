@@ -3,5 +3,6 @@ json.array!  @leads.each do |lead|
   :zip, :contacted, :appointment_date, :created_at, :updated_at, :processed_within_minutes, :hot, :rep_notes)
   json.events lead.events, :id, :lead_id, :name, :created_at, :updated_at
   json.outreaches lead.outreaches, :id, :lead_id, :description
+  json.most_recent_event lead.most_recent_event
 end
 
