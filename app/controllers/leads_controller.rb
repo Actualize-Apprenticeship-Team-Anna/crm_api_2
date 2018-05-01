@@ -116,6 +116,8 @@ class LeadsController < ApplicationController
 
   # Text from the browser:
   def text
+    @lead = Lead.find(params[:lead_id])
+
     @client = Twilio::REST::Client.new
     @client.messages.create(
       from: ENV['TWILIO_PHONE_NUMBER'],
@@ -123,7 +125,12 @@ class LeadsController < ApplicationController
       body: params[:body]
     )
 
-    render nothing: true
+    puts "leads man"
+    puts @lead.id
+
+    flash[:success] = "Auto text sent!"
+    redirect_to "/leads/#{@lead.id}/edit"
+
   end
 
   def auto_text
