@@ -108,6 +108,12 @@
   margin: 0 auto;
 }
 
-tr.no-outreaches, .table-striped tbody tr:nth-of-type(odd).no-outreaches, .table-hover tbody tr:hover.no-outreaches {
+tr.no-outreaches,
+.table-striped tbody tr:nth-of-type(odd).no-outreaches,
+.table-hover tbody tr:hover.no-outreaches {
   background-color: #f7c204;
+}
+
+.events-box {
+  display: none;
 }

@@ -44,7 +44,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
       },
       toggleFunction: function(lead) {
         if (document.getElementById(lead.id).style.display == "none") {
-          document.getElementById(lead.id).style.display = "block";
+          document.getElementById(lead.id).style.display = "inline";
         } else {
           document.getElementById(lead.id).style.display = "none";
         }

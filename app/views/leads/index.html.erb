@@ -51,11 +51,24 @@
                   <td>{{ moment(lead.appointment_date).format('dddd MMM Do YYYY, h:mm a') }}</td>
                   <td>{{ lead.rep_notes }}</td>
 
-                  <div v-bind:id="lead.id" style="display:none"> 
-                    <div class="events-container"> <div class="events-div"> Started Application </div> <div class="events-div">{{ moment(lead.created_at).format('dddd MMM Do YYYY, h:mm a') }}</div> </div>
-                    <div class="events-container"><div class="events-div">footer_form</div> <div class="events-div">{{ moment(lead.updated_at).format('dddd MMM Do YYYY, h:mm a') }}</div></div>
-                 </div>
+                  
                 </tr>
+
+                <div v-bind:id="lead.id" class="events-box"> 
+                  <div class="events-container"> <div> Started Application </div> <div>{{ moment(lead.created_at).format('dddd MMM Do YYYY, h:mm a') }}</div> </div>
+                  <div class="events-container"><div>footer_form</div> <div>{{ moment(lead.updated_at).format('dddd MMM Do YYYY, h:mm a') }}</div></div>
+
+                  <%= form_tag "/leads/edit/6", {class: "form-horizontal text-form"} do %>
+                    <div class="form-group row">
+                      <div class="col-sm-2">
+                        <%= submit_tag "Auto-Text", {class: "btn btn-info"} %>
+                      </div>
+                    </div>
+                  <% end %>
+
+                </div>
+
+                
 
               </template>
 

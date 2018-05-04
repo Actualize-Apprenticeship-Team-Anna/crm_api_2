@@ -6,7 +6,7 @@ class LeadsController < ApplicationController
     @leads = Lead.where("phone <> ''").order(created_at: :desc)
     # If someone used the search box:
     @leads = Lead.where("first_name ILIKE ? OR last_name ILIKE ? OR email ILIKE ? OR phone ILIKE ?", "%#{params[:search]}%", "%#{params[:search]}%", "%#{params[:search]}%", "%#{params[:search]}%").order(created_at: :desc) if params[:search]
-    puts @leads
+    # puts @leads
   end
 
   # This is a special feature for call converters who can just call lead after
@@ -127,6 +127,8 @@ class LeadsController < ApplicationController
   end
 
   def auto_text
+
+    puts "i'm being activated"
 
     @lead = Lead.find_by(id: params[:id])
 
