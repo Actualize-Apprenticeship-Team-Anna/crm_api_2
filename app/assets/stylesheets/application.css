@@ -111,3 +111,7 @@
 tr.no-outreaches, .table-striped tbody tr:nth-of-type(odd).no-outreaches, .table-hover tbody tr:hover.no-outreaches {
   background-color: #f7c204;
 }
+
+tr.blue, .table-striped tbody tr:nth-of-type(odd).blue, .table-hover tbody tr:hover.blue {
+  background-color: #0cc6f4;}
+

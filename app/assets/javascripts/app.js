@@ -22,6 +22,17 @@ document.addEventListener("DOMContentLoaded", function(event) {
       moment: function(date) {
         return moment(date);
       },
+      hello: function(lead) {
+        // console.log("1",lead.most_recent_event.created_at);
+        console.log("2",lead.most_recent_event && lead.most_recent_event.created_at);
+        console.log("3", lead.outreaches && lead.outreaches[0] && lead.outreaches[lead.outreaches.length - 1].created_at)
+
+        if (lead.most_recent_event && lead.most_recent_event.created_at > lead.outreaches && lead.outreaches[0] && lead.outreaches[lead.outreaches.length - 1].created_at){
+          console.log("fffffffffff");
+          return true;
+        } 
+        
+      },
       isValidLead: function(lead) {
         var validFirstName = lead.first_name
           .toLowerCase()

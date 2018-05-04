@@ -41,7 +41,7 @@
 
               <template v-for="lead in sortedLeads" v-if="isValidLead(lead)"> 
 
-                <tr v-on:click="toggleFunction(lead)" v-bind:class="{ 'no-outreaches': lead.outreaches.length == 0 }">
+                <tr v-on:click="toggleFunction(lead)" v-bind:class="{ 'no-outreaches': lead.outreaches.length == 0, 'blue': hello(lead) }">
 
                   <td>{{ moment(lead.created_at).format('dddd MMM Do YYYY, h:mm a') }}</td>
                   <td>{{ lead.first_name }}</td>
@@ -66,4 +66,6 @@
     </div>
   </section>
 </div>
+
+<!-- most_recent_event.created_at > lead.outreaches.created_at -->
 
